@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.management.library.data.models.Book;
 import com.management.library.data.repositories.BookRepository;
 import com.management.library.dtos.requests.CreateBookRequest;
-import com.management.library.dtos.requests.DeleteBookRequest;
 import com.management.library.dtos.requests.UpdateBookRequest;
 import com.management.library.dtos.responses.BookResponse;
 
@@ -56,9 +55,9 @@ public class BookServiceImpl implements BookService {
         return modelMapper.map(bookRepository.save(book), BookResponse.class);
 
     }
-    public void deleteBook(DeleteBookRequest request){
-        Book book = bookRepository.findByIsbn(request.getIsbn())
-                    .orElseThrow(() -> new RuntimeException("Book not found with ISBN: " + request.getIsbn()));
+    public void deleteBook(Long id){
+        Book book = bookRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Book not found with id: " + id));
         bookRepository.delete(book);
     }
 }

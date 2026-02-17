@@ -22,7 +22,7 @@ public class Author {
     private String name;
     private String email;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Book> books;
 
 }

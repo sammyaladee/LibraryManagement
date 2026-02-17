@@ -1,7 +1,6 @@
 package com.management.library.data.models;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import lombok.Data;

@@ -41,7 +41,9 @@ public class BookServiceImpl implements BookService {
     }
     
     public List<BookResponse> getAllBooks(){
-        return null;
+        return bookRepository.findAll().stream()
+                .map(book -> modelMapper.map(book, BookResponse.class))
+                .toList();
     }
     public BookResponse updateBook(UpdateBookRequest request){
         Book book = bookRepository.findByIsbn(request.getIsbn())

@@ -103,7 +103,8 @@ curl -X POST http://localhost:8080/api/authors \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Robert C. Martin",
-    "email": "robert@example.com"
+    "email": "robert@example.com",
+    "password": "password"
   }'
 ```
 

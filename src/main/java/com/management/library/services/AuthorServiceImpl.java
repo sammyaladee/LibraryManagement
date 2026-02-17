@@ -43,11 +43,9 @@ public class AuthorServiceImpl implements AuthorService {
                 .orElseThrow(() -> new RuntimeException("Author not found with id: " + id));
     }
     public AuthorResponse getAuthorByEmail(String email){
-        return authorRepository.findAll().stream()
-                .filter(author -> author.getEmail().equals(email))
-                .findFirst()
-                .map(author -> modelMapper.map(author, AuthorResponse.class))
-                .orElseThrow(() -> new RuntimeException("Author not found with email: " + email));
+        return authorRepository.findByEmail(email)
+            .map(author -> modelMapper.map(author, AuthorResponse.class))
+            .orElseThrow(() -> new RuntimeException("Author not found with email: " + email));
     }
     public List<AuthorResponse> getAllAuthor(){
         return authorRepository.findAll().stream()

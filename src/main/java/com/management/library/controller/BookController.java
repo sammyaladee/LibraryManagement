@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.management.library.dtos.requests.CreateBookRequest;
 import com.management.library.dtos.requests.DeleteBookRequest;
 import com.management.library.dtos.requests.UpdateBookRequest;
-import com.management.library.services.BookServiceImpl;
+import com.management.library.services.BookService;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 
@@ -24,7 +24,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class BookController {
     
-    private final BookServiceImpl bookService;
+    private final BookService bookService;
 
 
     @PostMapping

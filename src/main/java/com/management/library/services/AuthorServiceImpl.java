@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class AuthorServiceImpl implements AuthorServices{
+public class AuthorServiceImpl implements AuthorService {
 
     private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
     private static final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
@@ -61,6 +61,12 @@ public class AuthorServiceImpl implements AuthorServices{
             author.setName(request.getName());
         }
         return modelMapper.map(authorRepository.save(author), AuthorResponse.class);
+    }
+
+    public void deleteAuthor(Long id){
+        Author author = authorRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Author not found with id: " + id));
+        authorRepository.delete(author);
     }
     
 }
